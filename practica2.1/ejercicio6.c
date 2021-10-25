@@ -7,7 +7,7 @@
 
 
 int main() {
-	printf("Longitud máxima argumentos: %ld\n Número máximo de hijos: %ld\n Número máximo de ficheros %ld\n", sysconf(ARG_MAX), sysconf(CHILD_MAX), sysconf(OPEN_MAX));
+	printf("Longitud máxima argumentos: %ld\nNúmero máximo de hijos: %ld\nNúmero máximo de ficheros %ld\n", sysconf(_SC_ARG_MAX), sysconf(_SC_CHILD_MAX), sysconf(_SC_OPEN_MAX));
 	return 0;
 
 }
