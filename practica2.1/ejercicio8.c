@@ -8,6 +8,6 @@
 
 int main() 
 {
-	printf("UID: %d\n",getuid());
+	printf("UID Real: %d\nUID Efectivo: %d\n",getuid(), geteuid());
 	return 0;
 }
