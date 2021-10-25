@@ -1,10 +1,15 @@
 #include <stdio.h>
-#include <sys/types.h>
+#include <errno.h>
 #include <unistd.h>
+#include <sys/types.h>
 #include <string.h>
 
-int main() {
-   printf("%s\n", strerror(setuid(0)));
-   return 1;
+int main()
+{
+	char *err;
+	if (setuid(0) == -1)
+	{
+		perror(err);
+	}
+	return 1;
 }
-
