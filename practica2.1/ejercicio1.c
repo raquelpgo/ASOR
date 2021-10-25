@@ -6,10 +6,9 @@
 
 int main()
 {
-	char *err;
 	if (setuid(0) == -1)
 	{
-		perror(err);
+		printf("%s\n", strerror(errno));
 	}
 	return 0;
 }
