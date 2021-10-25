@@ -13,7 +13,8 @@ int main() {
 		printf("ERROR %d - %s", errno, strerror(errno));
 		return -1;
 	}
-	printf("%s, %s, %s, %s, %s\n", buf.sysname, buf.nodename, buf.release, 
-		buf.version, buf.machine);
+	printf("Sysname: %s, Nodename: %s, Release: %s, Version: %s, Machine: %s\n", 
+		buf.sysname, buf.nodename, buf.release,  buf.version, buf.machine);
+
 	return 0;	
 }
