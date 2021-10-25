@@ -11,5 +11,5 @@ int main()
 	{
 		perror(err);
 	}
-	return 1;
+	return 0;
 }
