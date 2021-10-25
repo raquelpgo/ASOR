@@ -3,14 +3,11 @@
 #include <unistd.h>
 #include <sys/types.h>
 #include <string.h>
-#include <iostream>
-using namespace std;
-
 int main()
 {
 	if (setuid(0) == -1)
 	{
-		cout << "ERROR " << errno << " " << strerror(errno) << endl;
+		printf("ERROR %d - %s",errno,strerror(errno));
 	}
 	return 0;
 }
