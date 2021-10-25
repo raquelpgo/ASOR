@@ -7,7 +7,7 @@ int main()
 {
 	if (setuid(0) == -1)
 	{
-		printf("ERROR %d - %s",errno,strerror(errno));
+		printf("ERROR %d - %s\n",errno,strerror(errno));
 	}
 	return 0;
 }
