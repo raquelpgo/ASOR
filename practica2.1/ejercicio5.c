@@ -4,7 +4,6 @@
 #include <unistd.h>
 #include <sys/types.h>
 #include <string.h>
-#include <errno.h>
 
 int main() {
 	struct utsname buf;
