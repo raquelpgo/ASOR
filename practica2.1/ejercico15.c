@@ -1,3 +1,4 @@
+#include <locale.h>
 #include <sys/time.h>
 #include <time.h>
 #include <pwd.h>
@@ -10,6 +11,8 @@
 
 int main() 
 {
+	setlocale(LC_ALL, "es_ES");	
+	
 	time_t aux;
 	time(&aux);
 	struct tm *t = localtime(&aux);
