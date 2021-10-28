@@ -14,9 +14,8 @@ int main()
 	time(&aux);
 	struct tm *t = localtime(&aux);
 	
-  char *s, *format = "%A, %d de %B de %Y, %R";
-	size_t m = 100:
-	strftime(s, m, format,t);
+	char s[100], *format = "%A, %d de %B de %Y, %R";
+	strftime(s, 100, format,t);
 	
 	printf("%s\n",s);
 	return 0;
