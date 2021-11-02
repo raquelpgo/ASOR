@@ -8,7 +8,7 @@
 int main(int argc, char* argv[])
 {
 	if (argc < 2) {
-		perror("Especifique la ruta del fichero!");
+		printf("Especifique la ruta del fichero!\n");
 		return -1;	
 	}
 
