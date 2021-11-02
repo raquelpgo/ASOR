@@ -1,0 +1,3 @@
+[cursoredes@localhost ~]$ touch ejercicio3.txt
+[cursoredes@localhost ~]$ chmod 645 ejercicio3.txt
+[cursoredes@localhost ~]$ chmod u+rw-x,g+r-wx,o+rx-w ejercicio3.txt
