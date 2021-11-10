@@ -3,6 +3,7 @@
 #include <unistd.h>
 #include <stdio.h>
 #include <errno.h>
+#include <time.h>
 
 int main(int argc, char* argv[])
 {
@@ -36,8 +37,13 @@ int main(int argc, char* argv[])
 		tipo="enlace simbólico";
 	}
 
-	printf("Major: %li\nMinor: %li\nNº Inodo: %li\nTipo de fichero: %s\nHora de último acceso: %s\n"
-		,(long)major(buf.st_dev),(long)minor(buf.st_dev),buf.st_ino,tipo,buf.st_atim);
+	
+	struct tm *t = localtime(&(buf.st_atim.tv_sec));
 
+	printf("Major: %li\nMinor: %li\nNº Inodo: %li\nTipo de fichero: %s\nHora de último acceso: %d:%d\n"
+		,(long)major(buf.st_dev),(long)minor(buf.st_dev),buf.st_ino,tipo,t->tm_hour,t->tm_min);
+
+
+	//LA DIFERENCIA ENTRE ST_MTIME Y ST_CTIME ES QUE LA PRIMERA GUARDA LA INFORMACIÓN DE LA FECHA DE LA ULTIMA MODIFICIACION Y LA SEGUNDA DE LA DE CREACIÓN
 	return 0;
 }
