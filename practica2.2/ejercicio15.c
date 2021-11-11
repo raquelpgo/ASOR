@@ -18,7 +18,7 @@ int main(int argc, char* argv[])
 	int fd;
 	if ((fd = open(argv[1], O_CREAT | O_WRONLY | O_TRUNC, 0666)) == -1)
 	{
-		printf("ERROR %d - %s", errno, sterror(errno));
+		printf("ERROR %d - %s", errno, strerror(errno));
 		return -1;
 	}
 
@@ -38,7 +38,8 @@ int main(int argc, char* argv[])
 		return -1;
 	}
 
-	struct tm *tm = localtime(&time(NULL));
+	time_t aux = time(NULL);
+	struct tm *tm = localtime(&aux);
 	char* buf;
 	sprintf (buf, "Hora: %d:%d\n", tm->tm_hour, tm->tm_min);
 	write(fd, &buf, strlen(buf));
