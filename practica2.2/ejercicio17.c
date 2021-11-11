@@ -7,6 +7,7 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <unistd.h>
+#include <stdbool.h>
 
 int main(int argc, char **argv) {
 
@@ -50,9 +51,25 @@ int main(int argc, char **argv) {
 		{
       			if (S_ISREG(info.st_mode))
 			{
+				bool ex = false;
+				int i = 0, x = info.st_mode;
+				printf("%d ",x);
+				while(!ex && i < 3)
+				{
+					
+
+					if ((x % 10) % 2 != 0)
+					{
+						ex = true;
+					}
+
+					x /= 10;
+					i++;
+				}
+				//EL PROBLEMA DA CON LOS ARCHIVOS CREADOS CON ROOT QUE SIEMPRE SALEN EJECUTABLES
 				
         			printf("%s", act->d_name);
-				if ((info.st_mode == S_IXUSR) || (info.st_mode == S_IXGRP) || (info.st_mode == S_IXOTH))
+				if (ex)
 				{
 					printf(" *");				
 				}
