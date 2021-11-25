@@ -43,18 +43,23 @@ int main(int argc, char* argv[])
 		return -1;
 	}
 
-	else if (pid == 1) // -> padre
-	{
-		printf("PROCESO PADRE");
-		print_info();
-	}
 
-	else //if pid == 0 -> hijo
+	else if (pid == 0) // -> hijo
 	{
+		//sleep(10);
 		pid_t sid = setsid();
 		chdir("/tmp");
-		printf("PROCESO HIJO");
+		printf("\n\nPROCESO HIJO\n\n");
 		print_info();
+		printf("\n\nFIN PROCESO HIJO\n\n");
+	}
+
+	else // -> padre
+	{
+		sleep(10);
+		printf("\n\nPROCESO PADRE\n\n");
+		print_info();
+		printf("\n\nFIN PROCESO PADRE\n\n");
 	}
 
 
