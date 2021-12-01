@@ -4,8 +4,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-
-
 int main(int argc, char* argv[])
 {
 	if (argc != 5)
@@ -33,57 +31,29 @@ int main(int argc, char* argv[])
 
 	if (pid == 0)
 	{
-
 		close(pipefd[1]);
 		dup2(pipefd[0],0);
-		
-		char buf;
-		while (read(pipefd[0], &buf, 1) > 0){}
 		close(pipefd[0]);
 
-
-		if (system(&buf) == -1)
+		if (execlp(argv[3], argv[3], argv[4], NULL) == -1)
 		{
 			printf("ERROR %i - %s\n", errno, strerror(errno));
 			return -1;	
 		}
-
 	}
 
 	else 
 	{
-
 		close(pipefd[0]);
 		dup2(pipefd[1], 1);
-
-		int long_cmd = 3 + strlen(argv[3]) + strlen(argv[4]);
-		char *cmd = malloc(sizeof(char)*long_cmd);
-  		cmd = "";
-
-		strcat(cmd, argv[3]);
-    		strcat(cmd, " ");
-		strcat(cmd, argv[4]);
-	
-		write(pipefd[1], cmd, long_cmd);
-
 		close(pipefd[1]);
 		
-		int long_cmd2 = 3 + strlen(argv[1]) + strlen(argv[2]);
-		char *cmd2 = malloc(sizeof(char)*long_cmd2);
-  		cmd2 = "";
-
-		strcat(cmd2, argv[1]);
-    		strcat(cmd2, " ");
-		strcat(cmd2, argv[2]);
-
-		if (system(cmd2) == -1)
+		if (execlp(argv[1], argv[1], argv[2], NULL) == -1)
 		{
 			printf("ERROR %i - %s\n", errno, strerror(errno));
 			return -1;	
 		}
-
 	}
-
+	
 	return 0;
-
 }
