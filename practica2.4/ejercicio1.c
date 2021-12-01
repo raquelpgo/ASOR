@@ -10,7 +10,8 @@ int main(int argc, char* argv[])
 {
 	if (argc != 5)
 	{
-		printf("Para ejecutar el programa aseguresé de seguir la estructura comando1"); 		printf(" argument1 comando2 argumento2\n");
+		printf("Para ejecutar el programa aseguresé de seguir la estructura comando1");
+		printf(" argument1 comando2 argumento2\n");
 		return -1;	
 	}
 
